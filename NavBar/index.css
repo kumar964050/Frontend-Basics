@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+/*                             small screen nav                     */
+
+/* nav container */
+.nav_bar {
+  padding: 10px 20px;
+  background-color: whitesmoke;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+/* nav logo */
+.nav_logo {
+  font-size: 20px;
+}
+
+/* input type check */
+.menu_btn {
+  display: none;
+}
+/* menu icon : hem menu */
+.menu_icon {
+  border: 1px solid;
+  padding: 13px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* men bars */
+/* bar top */
+.menu_bars {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  position: relative;
+  border-radius: 10px;
+  cursor: pointer;
+}
+/* bar middle */
+.menu_bars::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  top: -6px;
+  border-radius: 10px;
+}
+/* bar bottom */
+.menu_bars::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  top: 6px;
+  border-radius: 10px;
+}
+
+/* ul element : menu */
+.menu {
+  position: absolute;
+  left: 0;
+  top: 6vh;
+  overflow: hidden;
+  /*  */
+  width: 100%;
+  height: 0;
+  padding: 0 20px;
+
+  /*  */
+  background-color: whitesmoke;
+  list-style: none;
+  /*  */
+  transition: 0.3s all;
+}
+/* nav links */
+.menu a {
+  display: block;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  transition: 0.3s all;
+}
+/* nav links hover */
+.menu a:hover {
+  color: whitesmoke;
+  background-color: black;
+  transition: 0.3s all;
+}
+/* input checked then only menu will come out  with height 220px */
+.menu_btn:checked ~ .menu {
+  height: 220px;
+  padding: 20px;
+}
+
+/*             width >= 700px                 large screen nav                     */
+@media (width >= 700px) {
+  .menu_btn {
+    display: none;
+  }
+  .menu_icon {
+    display: none;
+  }
+  .menu {
+    position: relative;
+    height: 100%;
+    top: 0;
+    background-color: transparent;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+  .menu a {
+    margin: 0 10px;
+  }
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

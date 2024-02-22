@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark mode</title>
+    <style>
+      :root[color-schema="dark"] {
+        --bg-color: #000000;
+      }
+      :root[color-schema="lite"] {
+        --bg-color: #f7f7f7;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      .container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--bg-color);
+        transition: background 0.3s ease;
+      }
+      button {
+        padding: 10px 15px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body color-schema="lite">
+    <div class="container">
+      <button onclick="changeTheme()" class="btn">Change Mode</button>
+    </div>
+    <script>
+      // setting lite is default mode
+      document.documentElement.setAttribute("color-schema", "light");
+      function changeTheme() {
+        // getting root el (html)
+        const root = document.documentElement;
+        // get current value
+        const currentColorScheme = root.getAttribute("color-schema");
+        if (currentColorScheme === "dark") {
+          root.setAttribute("color-schema", "lite");
+        } else {
+          root.setAttribute("color-schema", "dark");
+        }
+      }
+    </script>
+  </body>
+</html>

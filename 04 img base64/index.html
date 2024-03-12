@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .img {
+        max-width: 600px;
+        /* height: 200px; */
+      }
+    </style>
+  </head>
+  <body>
+    <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL()" />
+    <div id="imgTest"></div>
+
+    <script>
+      function encodeImageFileAsURL() {
+        let filesSelected = document.getElementById("inputFileToLoad");
+        let imgContainer = document.getElementById("imgTest");
+        let getFile = filesSelected.files;
+        if (getFile.length > 0) {
+          let fileToLoad = getFile[0];
+          let fileReader = new FileReader();
+          fileReader.onload = function (fileLoadedEvent) {
+            let srcData = fileLoadedEvent.target.result; // <--- data: base64 url link
+            let newImage = document.createElement("img");
+            newImage.src = srcData;
+            newImage.classList.add("img");
+            imgContainer.appendChild(newImage);
+            alert(
+              "Converted Base64 version is " +
+                document.getElementById("imgTest").innerHTML
+            );
+          };
+          fileReader.readAsDataURL(fileToLoad);
+        }
+      }
+    </script>
+  </body>
+</html>
